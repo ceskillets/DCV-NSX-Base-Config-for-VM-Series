@@ -1,0 +1,43 @@
+name: nsx_base_template
+# label used for menu selection
+label: NSX-V Base Configuration
+
+description: This skillet sets the Admin password on NSX deployed VM-Series, creates a
+  dynamic update schedule to ensure the VM-Series recieve content updates from Panorama, and 
+  creates log forwarding actions to forward the logs from VM-Series to Panorama.
+
+# type of skillet (panos or panorama or template or terraform)
+type: panorama
+
+# more complex skillets may express a dependency on another skillet that should be loaded before this one.
+# For example, a set of skillets may build off of a single 'golden config' that contains shared configuration
+# As this skillet is very simple, there is no need to build on another one.
+extends:
+
+# Labels allow grouping and type specific options and are generally only used in advanced cases
+labels:
+  collection:
+    - Datacenter Virtualization
+    - Configure
+    - NSX
+
+variables:
+  - name: TEMPLATE_NAME
+    description: What is the Template Name for the NSX VM-Series?
+    default: 
+    type_hint: text
+  - name: ADMINISTRATOR_PASSWORD
+    description: Enter new Admin password for NSX VM-Series
+    default: 
+    type_hint: text
+
+snippets:
+  - xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/system/deployment-update-schedule
+    name: set dynamic update schedule
+    file: dynamic_update.xml
+  - xpath: /config/devices/entry[@name='localhost.localdomain']/template/entry[@name='{{ TEMPLATE_NAME }}']
+    name: set vm-series admin password
+    file: admin_pass.xml
+  - xpath: /config/shared/log-settings
+    name: set vm-series to log to panorama
+    file: log_settings.xml

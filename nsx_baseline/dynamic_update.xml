@@ -1,0 +1,47 @@
+      <entry name="App and Threat">
+        <app-and-threat>
+          <recurring>
+            <every-30-mins>
+              <at>0</at>
+              <action>
+                <download-only/>
+              </action>
+            </every-30-mins>
+          </recurring>
+        </app-and-threat>
+      </entry>
+      <entry name="Wildfire">
+        <wildfire>
+          <recurring>
+            <every-min>
+              <action>
+                <download-only/>
+              </action>
+            </every-min>
+          </recurring>
+        </wildfire>
+      </entry>
+      <entry name="AV">
+        <anti-virus>
+          <recurring>
+            <hourly>
+              <action>
+                <download-only/>
+              </action>
+              <at>5</at>
+            </hourly>
+          </recurring>
+        </anti-virus>
+      </entry>
+      <entry name="URL">
+        <url-database>
+          <recurring>
+            <daily>
+              <action>
+                <download-only/>
+              </action>
+              <at>00:15</at>
+            </daily>
+          </recurring>
+        </url-database>
+      </entry>

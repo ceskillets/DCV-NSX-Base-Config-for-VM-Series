@@ -1,0 +1,14 @@
+      <config>
+        <mgt-config>
+          <users>
+            <entry name="admin">
+              <permissions>
+                <role-based>
+                  <superuser>yes</superuser>
+                </role-based>
+              </permissions>
+              <phash>{{ ADMINISTRATOR_PASSWORD | md5_hash }}</phash>
+            </entry>
+          </users>
+        </mgt-config>
+      </config>
