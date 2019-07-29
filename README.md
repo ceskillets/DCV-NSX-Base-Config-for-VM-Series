@@ -1,5 +1,3 @@
-# Still under testing
-
 # NSXBaseTemplateSkillet
 The Skillet changes the default VM-Series device configuration after deployment in an NSX environment
 
